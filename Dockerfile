@@ -10,9 +10,6 @@ WORKDIR /app
 # Copiando os arquivos que tenha o prefixo package.* para dentro do container
 COPY ./package.* ./
 
-# Limpando o cache
-RUN npm cache clean
-
 # Instale o Quasar CLI globalmente
 RUN npm install -g @quasar/cli
 
