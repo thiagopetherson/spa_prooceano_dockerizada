@@ -10,6 +10,9 @@ WORKDIR /app
 # Copiando os arquivos que tenha o prefixo package.* para dentro do container
 COPY ./package.* ./
 
+# Instale o Quasar CLI globalmente
+RUN npm install -g @quasar/cli
+
 # Instalando os pacotes (quando está criando a imagem)
 RUN npm install
 
@@ -20,9 +23,6 @@ COPY . .
 
 # Instala dependências e copia arquivos e o dev inicia um servidor de desenvolvimento (Criando a imagem de Dev)
 FROM base AS dev
-
-# Instale o Quasar CLI globalmente
-RUN npm install -g @quasar/cli
 
 # Copiando o entrypoint quando o container está sendo criado (diferente do run que é quando está criando a imagem)
 COPY ./.docker/entrypoint.sh /docker-entrypoint.sh
