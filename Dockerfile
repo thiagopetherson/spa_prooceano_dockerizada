@@ -1,8 +1,8 @@
 # ----- Primeira Etapa ------- #
 
 # Imagem Base
-FROM node:14.21.3-alpine AS base
-# FROM node:lts-alpine AS base
+# FROM node:14.21.3-alpine AS base
+FROM node:lts-alpine AS base
 
 # Diretório de trabalho (qualquer comando a partir daqui, será rodado naquela pasta ali)
 WORKDIR /app
