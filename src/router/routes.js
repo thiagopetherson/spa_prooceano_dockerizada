@@ -1,4 +1,3 @@
-
 const routes = [
   {
     path: '/',
@@ -20,10 +19,11 @@ const routes = [
       { path: 'home', name: 'home', component: () => import('pages/HomeView.vue') },
       { path: 'map', name: 'map', component: () => import('pages/MapView.vue') },
       { path: 'map-first-device', name: 'map-first-device', component: () => import('src/pages/MapFirstDeviceView.vue') },
-      { path: 'map-second-device', name: 'map-second-device', component: () => import('src/pages/MapSecondDeviceView.vue') },   
+      { path: 'map-second-device', name: 'map-second-device', component: () => import('src/pages/MapSecondDeviceView.vue') },
       { path: 'map-location', name: 'map-location', component: () => import('pages/MapLocationView.vue') },
       { path: 'locations', name: 'locations', component: () => import('src/pages/locations/LocationsView.vue') },
-      { path: 'form-location/:id?', name: 'form-location', component: () => import('pages/locations/LocationFormView.vue') }
+      { path: 'form-location/:id?', name: 'form-location', component: () => import('pages/locations/LocationFormView.vue') },
+      { path: 'import', name: 'import', component: () => import('src/pages/import/ImportFormView.vue') }
     ],
     meta: {
       requiresAuth: true

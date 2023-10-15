@@ -36,7 +36,7 @@ export default function useAuthUser () {
       password: password
     })
     .then(response => {
-      notifySuccess('Usuário logado com sucesso', 3000)
+      notifySuccess('Usuário logado com sucesso', 'Seja bem vindo!', 3000)
       storeAuth.setUser(response.data.user)
       storeAuth.setToken(response.data.token)
       router.push({ name: 'home' })
@@ -53,7 +53,7 @@ export default function useAuthUser () {
     await api.get('logout', { headers: {"Authorization" : `Bearer ${token}`} })
     .then(response => {
       storeAuth.logoutUser()
-      notifySuccess('Usuário deslogado com sucesso')
+      notifySuccess('Usuário deslogado com sucesso', 'Até a próxima!', 3000)
       router.push({ name: 'login' })
     })
     .catch(error => {

@@ -2,7 +2,7 @@
   <q-page class="column flex-center">
     <h6 class="title">Desenvolvido com carinho, esforço e utilizando:</h6>
     <img
-      v-if="quasar.platform.is.desktop" 
+      v-if="quasar.platform.is.desktop"
       alt="Prooceano Logo"
       src="~assets/vue-laravel.png"
       style="width: 600px; height: 325px"
@@ -19,7 +19,6 @@
 <script>
 import { defineComponent } from 'vue'
 import { useQuasar } from 'quasar'
-
 
 export default defineComponent({
   name: 'IndexPage',

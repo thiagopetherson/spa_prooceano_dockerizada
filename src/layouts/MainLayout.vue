@@ -22,13 +22,13 @@
           </q-btn>
         </div>
 
-        <div>          
+        <div>
           <router-link to="/home">
             <q-btn icon="home">
               Home
             </q-btn>
           </router-link>
-        </div>        
+        </div>
 
         <div>
           <q-btn icon="logout" @click="handleLogout">
@@ -70,7 +70,6 @@
 import { useQuasar } from 'quasar'
 import { useAuthStore } from 'stores/auth'
 import useAuthUser from 'src/composables/requests/UseAuthUser'
-import DarkModeToggleComponent from 'src/components/DarkModeToggleComponent.vue'
 import { defineComponent, ref } from 'vue'
 import EssentialLinkComponent from 'src/components/EssentialLinkComponent.vue'
 
@@ -92,21 +91,26 @@ const linksList = [
     caption: 'Equipamento Medidor de Salinidade',
     icon: 'wifi',
     routeName: 'map-second-device'
-  },  
+  },
   {
     title: 'Localidades',
     caption: 'Cadastro e Listagem de Localizações',
     icon: 'location_on',
     routeName: 'locations'
-  },   
+  },
+  {
+    title: 'Importação',
+    caption: 'Importação de Localidades',
+    icon: 'cloud_upload',
+    routeName: 'import'
+  }
 ]
 
 export default defineComponent({
   name: 'MainLayout',
 
   components: {
-    EssentialLinkComponent,
-    DarkModeToggleComponent
+    EssentialLinkComponent
   },
 
   setup () {
@@ -117,10 +121,10 @@ export default defineComponent({
     const leftDrawerOpen = ref(false)
 
     const handleLogout = async () => {
-      quasar.dialog({title: 'Logout', message: 'Tem certeza que deseja sair ?', cancel: true, persistent: true})
-      .onOk(async () => {
-        await logout()        
-      })
+      quasar.dialog({ title: 'Logout', message: 'Tem certeza que deseja sair ?', cancel: true, persistent: true })
+        .onOk(async () => {
+          await logout()
+        })
     }
 
     return {

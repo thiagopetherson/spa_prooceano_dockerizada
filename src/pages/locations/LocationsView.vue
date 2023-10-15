@@ -8,7 +8,7 @@
 
         <template v-slot:body-cell-action="props">
           <q-td :props="props" class="q-gutter-x-sm">
-            <q-btn color="info" icon="mdi-map-marker-outline" size="md" dense @click="handleViewMarker(props.row)" />            
+            <q-btn color="info" icon="mdi-map-marker-outline" size="md" dense @click="handleViewMarker(props.row)" />
             <q-btn color="green" icon="mdi-pencil-outline" size="md" dense @click="handleViewEdit(props.row)" />
             <q-btn color="negative" icon="mdi-delete-outline" size="md" dense @click="handleDelete(props.row)" />
           </q-td>
@@ -32,28 +32,26 @@ export default defineComponent({
     const $q = useQuasar()
     const locations = ref([])
     const { index, destroy } = useLocationApi()
- 
+
     // Métodos
     const handleList = async () => {
       showLoading()
-      locations.value = await index() 
-      hideLoading() 
-    }    
+      locations.value = await index()
+      hideLoading()
+    }
 
     const handleViewEdit = async (location) => {
       router.push({ name: 'form-location', params: { id: location.id } })
     }
 
     const handleDelete = (location) => {
-
-      $q.dialog({ title: "Confirma", message: 'Você confirma essa ação ?', cancel: true, persistent: true})
-      .onOk(async () => {
-        let response = await destroy(location.id)  
-        if (response) handleList() 
-      })
-            
+      $q.dialog({ title: 'Confirma', message: 'Você confirma essa ação ?', cancel: true, persistent: true})
+        .onOk(async () => {
+          const response = await destroy(location.id)
+          if (response) handleList()
+        })
     }
- 
+
     const handleViewMarker = (location) => {
       router.push({ name: 'map-location', query: { latitude: location.latitude, longitude: location.longitude, name: location.name } })
     }
@@ -70,20 +68,20 @@ export default defineComponent({
     }
 
     const hideLoading = () => {
-      $q.loading.hide()    
+      $q.loading.hide()
     }
-    
+
     // Life Cycle
     onMounted(() => {
-      handleList() 
+      handleList()
     })
-   
+
     return {
       columnsLocation,
       locations,
       handleViewEdit,
       handleDelete,
-      handleViewMarker,
+      handleViewMarker
     }
   }
 })

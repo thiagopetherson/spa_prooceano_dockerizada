@@ -1,8 +1,8 @@
 # ----- Primeira Etapa ------- #
 
 # Imagem Base
-# FROM node:14.21.3-alpine AS base
-FROM node:lts-alpine AS base
+FROM node:14.21.3-alpine AS base
+# FROM node:lts-alpine AS base
 
 # Diretório de trabalho (qualquer comando a partir daqui, será rodado naquela pasta ali)
 WORKDIR /app
@@ -39,7 +39,7 @@ EXPOSE 8080
 # Rodando o comando que sobe o server node (esse comando pode ser sobrescrito se utilizar um comando na hora de executar o container como "docker run -it --rm spa:0.1 ls")
 # .. Acima, o "ls" substitui o "CMD ["npm", "run", "serve"]" abaixo
 # CMD ["quasar", "dev"]
-CMD ["quasar", "dev", "-m", "pwa"]
+CMD ["quasar", "dev"]
 
 # ----- Terceira Etapa (Build) ------- #
 
@@ -47,7 +47,7 @@ CMD ["quasar", "dev", "-m", "pwa"]
 FROM base AS build
 
 # Rodando esse comando (para construção) dentro do container (criar a pasta dist e tals)
-RUN quasar build -m pwa
+RUN quasar build
 
 # ----- Quarta Etapa (Prod) ------- #
 
@@ -56,7 +56,7 @@ FROM nginx:1.25.1-alpine AS prod
 
 # Copiando a pasta dist (que contém os arquivos estáticos gerados na etapa anterior) e colocando para dentro do Nginx
 # COPY --from=build /app/dist/spa /usr/share/nginx/html
-COPY --from=build /app/dist/pwa /usr/share/nginx/html
+COPY --from=build /app/dist/spa /usr/share/nginx/html
 
 # Copiando os arquivos de configuração do Nginx
 COPY ./config/nginx-spa.conf /etc/nginx/nginx.conf
