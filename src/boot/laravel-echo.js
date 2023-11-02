@@ -17,8 +17,8 @@ export default boot(async () => {
     authEndpoint: 'http://' + window.location.hostname + '/broadcasting/auth', // http://127.0.0.1:8000/broadcasting/auth
     encrypted: true,
     forceTLS: false,
-    wsPort: 9000, // window.location.port, // 6001
-    wssPort: 9000, // window.location.port, // 6001
+    wsPort: 80, // window.location.port, // 6001
+    wssPort: 80, // window.location.port, // 6001
     disableStats: true,
     enabledTransports: ['ws', 'wss'],
     auth: {
