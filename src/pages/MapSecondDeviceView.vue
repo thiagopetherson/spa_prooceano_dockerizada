@@ -8,8 +8,7 @@
 import { defineComponent, ref, onMounted } from 'vue'
 import MapComponent from 'src/components/maps/MapComponent.vue'
 import useDeviceLocationApi from 'src/composables/requests/UseDeviceLocationApi'
-// import { echo } from 'boot/laravel-echo'
-import { LocalStorage } from 'quasar'
+import { echo } from 'boot/laravel-echo'
 
 export default defineComponent({
   name: 'MapSecondDeviceView',
@@ -23,27 +22,27 @@ export default defineComponent({
 
     // Métodos
     const handleList = async () => {
-      markers.value = await getLocationByDevice(2)     
+      markers.value = await getLocationByDevice(2)
       loading.value = false
     }
 
     onMounted(() => {
-      /* Aqui o websockets rodaria
-      // Se conectando a um canal       
+
+      // Se conectando a um canal
       echo.channel(`refreshSecondDeviceLocation`).listen('.RefreshSecondDeviceLocation', async (data) => { // primeiro param canal, segundo evento
         console.log('evento funcionou')
         loading.value = true
         handleList()
       })
-      */
 
-      handleList() 
+
+      handleList()
     })
 
     return {
       markers,
       loading
     }
-  }  
+  }
 })
 </script>

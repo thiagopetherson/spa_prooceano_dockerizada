@@ -8,8 +8,7 @@
 import { defineComponent, ref, onMounted } from 'vue'
 import MapComponent from 'src/components/maps/MapComponent.vue'
 import useDeviceLocationApi from 'src/composables/requests/UseDeviceLocationApi'
-//import { echo } from 'boot/laravel-echo'
-import { LocalStorage } from 'quasar'
+import { echo } from 'boot/laravel-echo'
 
 export default defineComponent({
   name: 'MapFirstDeviceView',
@@ -23,28 +22,27 @@ export default defineComponent({
 
     // Métodos
     const handleList = async () => {
-      markers.value = await getLocationByDevice(1)   
+      markers.value = await getLocationByDevice(1)
       loading.value = false
     }
 
     // Life Cycle
 
     onMounted(() => {
-      /*
-      // Se conectando a um canal       
-      echo.channel(`refreshFirstDeviceLocation`).listen('.RefreshFirstDeviceLocation', async (data) => {      
+
+      // Se conectando a um canal
+      echo.channel(`refreshFirstDeviceLocation`).listen('.RefreshFirstDeviceLocation', async (data) => {
         loading.value = true
         handleList()
       })
-      */
 
-      handleList() 
+      handleList()
     })
 
     return {
       markers,
       loading
     }
-  }  
+  }
 })
 </script>
