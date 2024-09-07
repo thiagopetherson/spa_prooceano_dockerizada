@@ -70,10 +70,10 @@ module.exports = configure(function (/* ctx */) {
       // publicPath: '/',
       // analyze: true,
       env: {
-        // API_URL: 'https://prooceano-app-backend.herokuapp.com/api/',
         // API_URL: 'http://localhost:8000/api/',
+        // API_URL: 'http://147.182.253.112/backend/api/',
         // API_URL: 'http://127.0.0.1:81/api/',
-        API_URL: 'http://147.182.253.112/backend/api/',
+        API_URL: 'http://147.182.253.112/api/',
         VUE_APP_PUSHER_APP_KEY: 'myappkey',
         VUE_PUSHER_APP_CLUSTER: 'mt1'
       }
