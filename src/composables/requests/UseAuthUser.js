@@ -36,9 +36,9 @@ export default function useAuthUser () {
       password: password
     })
     .then(response => {
-      notifySuccess('Usuário logado com sucesso', 'Seja bem vindo!', 3000)
-      storeAuth.setUser(response.data.user)
-      storeAuth.setToken(response.data.token)
+      notifySuccess('Usuário logado com sucesso', 'Seja bem vindo!', 3000)   
+      storeAuth.setUser(response.data.data.user)
+      storeAuth.setToken(response.data.data.token)
       router.push({ name: 'home' })
     })
     .catch(error => {
